@@ -4,6 +4,7 @@ int main() {
     int numbers[] = {1, 3, 5, 7, 9};
     
     // Declaring a pointer and assign the address of the first element of the array to it
+    // ** You can also assign int* ptr to just 'numbers' as doing so would make the 'ptr' value point to the first value of the array 'numbers'  **
     int *ptr = &numbers[0];
 
     // Use the pointer to traverse the array and print its elements
