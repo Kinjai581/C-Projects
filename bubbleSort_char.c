@@ -1,6 +1,10 @@
 #include <stdio.h>
 
-//** You successfully completed the task, but make sure you add comments to the code so I can see if you understand the implementation and what you have written. Try to explain the difference between the bubbleSort_ascending and bubbleSort_descending methods and what you did differently, as well as how does the bubble sort algorithm sort the array? Try to explain, at most, every line (except for the printing methds) if you can. You can reflect on what we did with the previous task on the last session to help remind you. **
+// ** You successfully completed the task, but make sure you add comments to the code so I can see if you understand
+// the implementation and what you have written. Try to explain the difference between the bubbleSort_ascending and 
+// bubbleSort_descending methods and what you did differently, as well as how does the bubble sort algorithm sort the array? 
+// Try to explain, at most, every line (except for the printing methods) if you can. You can reflect on what we did with the 
+// previous task on the last session to help remind you. **
 
 void bubbleSort_ascending(char arr[], int n){
         for (int i = 0; i < n - 1; i++){
