@@ -1,5 +1,6 @@
 #include <stdio.h>
 
+// ** Bubble sort algorithm **
 void bubbleSort_ascending(char arr[], int n){ //takes in the arguments of the character array.
         for (int i = 0; i < n - 1; i++){ //The outer for loop for the number of passes.
                 for (int j = 0; j < n - i - 1; j++) { //Inner loop for comparisons and swaps
