@@ -1,19 +1,15 @@
 #include <stdio.h>
 
-// ** You successfully completed the task, but make sure you add comments to the code so I can see if you understand
-// the implementation and what you have written. Try to explain the difference between the bubbleSort_ascending and 
-// bubbleSort_descending methods and what you did differently, as well as how does the bubble sort algorithm sort the array? 
-// Try to explain, at most, every line (except for the printing methods) if you can. You can reflect on what we did with the 
-// previous task on the last session to help remind you. **
-
-void bubbleSort_ascending(char arr[], int n){ //
+void bubbleSort_ascending(char arr[], int n){ //takes in the arguments of the character array.
         for (int i = 0; i < n - 1; i++){ //The outer for loop for the number of passes.
                 for (int j = 0; j < n - i - 1; j++) { //Inner loop for comparisons and swaps
                         if (arr[j] > arr[j + 1]) { //Compare adjacent elements and swap if required for ascending order
-                                char temp = arr[j];
-                                arr[j] = arr[j + 1];
-                                arr[j + 1] = temp;
-                        }
+                                char temp = arr[j];//creating a temporary variable and assigns it the value of the element at index j in the array. This is done to prevent data loss.
+                                arr[j] = arr[j + 1];// This effectively moves the value from the next position to the current position, overwriting the original value at index j.
+                                arr[j + 1] = temp;//This completes the swap by moving the original value of arr[j] to the next position.
+
+                                // The three lines in the if statement swap the variables of arr[j] and arr[j+1].
+                       }
                 }
         }
 }
@@ -33,7 +29,7 @@ void bubbleSort_decending(char arr[], int n){
 
 int main(void) {
     char arr[] = {'j','l','u','c','k','a','t','w'}; //Create the array of character type
-    int n = sizeof(arr)/sizeof(arr[0]); //Calculate the number of elements within the array. 
+    int n = sizeof(arr)/sizeof(arr[0]); //Calculate the number of elements within the array.
 
     printf("Original array: ");
     for (int i = 0; i < n; i++)
