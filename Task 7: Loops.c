@@ -1,20 +1,23 @@
 #include <stdio.h>
 
 int main(){
-    int n, sum = 0;
-    printf("Enter n value: \n");
-    scanf("%d",&n);
+    printf("Enter a temperature in Celsius: \n");
+    float temp;
+    scanf("%f", &temp);
 
-    if (n <= 0){
-        printf("Error: n must be a positive integer \n");
-        return 1; // Exit program with an error code
+    if (temp < 0){
+        printf("Freezing weather\n");
+    } else if (temp >= 0 && temp < 10) {
+        printf("Very cold weather\n");
+    } else if (temp >= 10 && temp < 20) {
+        printf("Cold weather\n");
+    } else if (temp >= 20 && temp < 30) {
+        printf("Normal in room temperature\n");
+    } else if (temp >= 30 && temp < 40) {
+        printf("It's hot\n");
+    } else {
+        printf("It's very hot\n");
     }
-
-    for (int i = 1; i <= n; i++){
-        sum += i;
-    }
-
-    printf("The sum of all values from 1to %d is: %d\n", n, sum);
 
         return 0;
 
