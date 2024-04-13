@@ -62,20 +62,35 @@ void printList(Node* head) {
     return head;
 }*/
 
-Node* removeNodes(Node* head, int target){
+//Fixed up the issue in the remove nodes function
+Node* removeNodes(Node* head, int target) {
     Node* temp = head;
     Node* prev = NULL;
-    
-    while (temp != NULL) {
-        if (temp->data == target){
-            prev->next = temp->next;
-            free(temp);
-        }
-        
-        //printf("%d -> ", head->data);
-        temp = temp->next;
-        prev = temp;
+
+    //Handle head node removal
+    while (temp != NULL && temp->data == target) {
+        head = temp->next;
+        free(temp);
+        temp = head;
     }
+
+    //Here we should be removing any other node
+    //Think of it as a chain (a link, hence why it is called a linked list)
+    while (temp != NULL) {
+        //If it is the target
+        if (temp->data == target) {
+            //Make the previous node's next the current node's next
+            prev->next = temp->next;
+            free(temp); //Deallocate current (aka removed) node
+            //Move the temporary node as the next node of the previous so it removed the current node
+            temp = prev->next;
+        } else {
+            prev = temp;
+            temp = temp->next;
+        }
+    }
+
+    return head;
 }
 
 
