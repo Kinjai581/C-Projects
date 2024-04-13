@@ -62,6 +62,7 @@ void printList(Node* head) {
     return head;
 }*/
 
+//**
 //Fixed up the issue in the remove nodes function
 Node* removeNodes(Node* head, int target) {
     Node* temp = head;
@@ -92,7 +93,7 @@ Node* removeNodes(Node* head, int target) {
 
     return head;
 }
-
+//**
 
 int main(){
     Node* head = NULL;
