@@ -86,6 +86,7 @@ Node* removeNodes(Node* head, int target) {
             //Move the temporary node as the next node of the previous so it removed the current node
             temp = prev->next;
         } else {
+            //Otherwise just traverse through list and store the current (temp) and previous (prev) nodes
             prev = temp;
             temp = temp->next;
         }
