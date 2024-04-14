@@ -47,8 +47,8 @@ node_l* insertRight(int value, node_l* node){
 void freeTreeNodes(node_l* root){
     if (root == NULL) return;
   printf("%d ->", root->value);
-  preorderTraversal(root->left);
-  preorderTraversal(root->right);
+  freeTreeNodes(root->left);
+  freeTreeNodes(root->right);
   free(root);
   
 }
