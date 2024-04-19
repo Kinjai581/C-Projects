@@ -18,6 +18,8 @@ Tree* initialize_tree(){
 
 }
 
+// Make a remove node function- Remove every child node
+
 void preorderTraversal(node_l* root) {
   if (root == NULL) return;
   printf("%d ->", root->value);
