@@ -18,7 +18,38 @@ Tree* initialize_tree(){
 
 }
 
+void freeTreeNodes(node_l* root){
+    if (root == NULL) return;
+  printf("%d ->", root->value);
+  freeTreeNodes(root->left);
+  freeTreeNodes(root->right);
+  free(root);
+  
+}
+
 // Make a remove node function- Remove every child node
+
+void deleteSubtree(node_l** root, int value) {
+    if (*root == NULL) {
+        return; // Base case: tree is empty or we've hit a leaf node.
+    }
+    
+    if ((*root)->value == value) {
+        // Found the node, now delete this subtree
+        freeTreeNodes(*root);
+        *root = NULL; // Important to prevent dangling pointer in the parent node
+        return;
+    }
+    
+    // Recur down to find the node
+    deleteSubtree(&((*root)->left), value);
+    deleteSubtree(&((*root)->right), value);
+}
+
+void removeNodeWithChildren(Tree* tree, int value) {
+    if (tree == NULL) return;
+    deleteSubtree(&(tree->root), value);
+}
 
 void preorderTraversal(node_l* root) {
   if (root == NULL) return;
@@ -27,7 +58,7 @@ void preorderTraversal(node_l* root) {
   preorderTraversal(root->right);
 }
 
-//Create a initialize_node method that initializes a node_l*
+
 node_l* initialize_node(int value){
     node_l* new_node = malloc(sizeof(node_l));
     new_node->value = value;
@@ -46,14 +77,7 @@ node_l* insertRight(int value, node_l* node){
     return node->right;
 }
 
-void freeTreeNodes(node_l* root){
-    if (root == NULL) return;
-  printf("%d ->", root->value);
-  freeTreeNodes(root->left);
-  freeTreeNodes(root->right);
-  free(root);
-  
-}
+
 
 
 int main() {
@@ -62,9 +86,19 @@ int main() {
     printf("%d\n", s->root->value);
     insertLeft(3, s->root);
     insertRight(8, s->root);
+    insertLeft(7, s->root->left);// Add child node to 3
     printf("%d\n", s->root->left->value);
     printf("%d\n", s->root->right->value);
-    //preorderTraversal(s->root);
+    
+    printf("Preorder before removal: ");
+    preorderTraversal(s->root);
+    printf("\n");
+
+    removeNodeWithChildren(s, 3);
+    
+    printf("Preorder after removal: ");
+    preorderTraversal(s->root);
+    printf("\n");
     
     freeTreeNodes(s->root);
     free(s);
