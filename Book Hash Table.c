@@ -58,26 +58,16 @@ int main(){
     insert_value(4, "Oliver Twist");
     insert_value(5, "Moby Dick");
 
-    HashNode* item = search_value(1);
-    if (item != NULL) {
-        printf("Book ID: %d, Title: %s\n", item->ID, item->title);
-    } else {
-        printf("Book not found\n");
+    // Searching for book
+    printf("Enter Book ID Here: \n");
+    int ID_input;
+    scanf("%d", &ID_input);
+    HashNode* item = search_value(ID_input);
+    if (item != NULL){
+        printf("Book ID: %d, Title: %s", item->ID, item->title);
     }
-
-    item = search_value(2);
-    if (item != NULL) {
-        printf("Book ID: %d, Title: %s\n", item->ID, item->title);
-    } else {
-        printf("Book not found\n");
-    }
-
-    // Search for a non-existing book
-    item = search_value(10);
-    if (item != NULL) {
-        printf("Book ID: %d, Title: %s\n", item->ID, item->title);
-    } else {
-        printf("Book not found\n");
+    else{
+        printf("Book not found");
     }
 
     freeHashMap();
