@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define MAX_TITLES 20
-#define INDEX_AMOUNT 20
+#define MAX_TITLES 30
+#define INDEX_AMOUNT 30
 
 typedef struct HashNode {
     int ID;
@@ -51,26 +51,60 @@ int main(){
     for (int i = 0; i < INDEX_AMOUNT; i++) {
         hashArray[i] = NULL;
     }
-
-    insert_value(1, "Lord of the Flies");
-    insert_value(2, "1984");
-    insert_value(3, "To Kill a Mockingbird");
-    insert_value(4, "Oliver Twist");
-    insert_value(5, "Moby Dick");
-
-    // Searching for book
-    printf("Enter Book ID Here: \n");
-    int ID_input;
-    scanf("%d", &ID_input);
-    HashNode* item = search_value(ID_input);
-    if (item != NULL){
-        printf("Book ID: %d, Title: %s", item->ID, item->title);
+    
+    
+    while (1){
+        printf("\nMenu:\n");
+        printf("1. Insert book\n");
+        printf("2. Search book\n");
+        printf("3. Exit\n");
+        printf("Enter your choice: ");
+        int choice;
+        scanf("%d", &choice);
+    
+        if (choice == 1){
+            int ID_input;
+            char title[MAX_TITLES];
+            printf("Enter a book ID (0 to %d): ", INDEX_AMOUNT - 1);
+            scanf("%d", &ID_input);
+        
+            printf("Enter book title: ");
+            scanf("%s", title);
+        
+            insert_value(ID_input, title);
+        }
+    
+        else if (choice == 2){
+            printf("Enter Book ID Here: \n");
+            int ID_input;
+            scanf("%d", &ID_input);
+            HashNode* item = search_value(ID_input);
+        
+            if (item != NULL){
+                printf("Book ID: %d, Title: %s", item->ID, item->title);
+            }
+        
+            else{
+                printf("Book not found\n");
+            }
+        }
+        
+    
+    
+        else if (choice == 3){
+            freeHashMap();
+            break;
+        }
+    
+    
+    
+        else{
+            printf("Invalid input. Please enter a number from 1 to 3.\n");
+        }
+    
     }
-    else{
-        printf("Book not found");
-    }
 
-    freeHashMap();
+    
     
     return 0;
 }
