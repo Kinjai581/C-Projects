@@ -39,6 +39,22 @@ HashNode* search_value(int ID) {
     return hashArray[ID];
 }
 
+void remove_value(int ID){
+    if (ID < 0 || ID >= INDEX_AMOUNT){
+        printf("ID %d is out of range. Must be between 0 and %d.\n", ID, INDEX_AMOUNT - 1);
+        return;
+    }
+    
+    if (hashArray[ID] != NULL){
+        free(hashArray[ID]);
+        hashArray[ID] = NULL;
+        printf("Book with ID %d has been removed succesfully.\n", ID);
+    }
+    else{
+        printf("No book at ID %d found.\n", ID);
+    }
+}
+
 void freeHashMap() {
     for (int i = 0; i < INDEX_AMOUNT; i++) {
         if (hashArray[i] != NULL) {
@@ -57,7 +73,8 @@ int main(){
         printf("\nMenu:\n");
         printf("1. Insert book\n");
         printf("2. Search book\n");
-        printf("3. Exit\n");
+        printf("3. Remove book\n");
+        printf("4. Exit\n");
         printf("Enter your choice: ");
         int choice;
         scanf("%d", &choice);
@@ -84,14 +101,23 @@ int main(){
                 printf("Book ID: %d, Title: %s", item->ID, item->title);
             }
         
+        
             else{
                 printf("Book not found\n");
             }
+        
+        }
+        
+        else if (choice == 3){
+            int ID_input;
+            printf("Enter Book ID Here: \n");
+            scanf("%d", &ID_input);
+            remove_value(ID_input);
         }
         
     
     
-        else if (choice == 3){
+        else if (choice == 4){
             freeHashMap();
             break;
         }
@@ -104,6 +130,10 @@ int main(){
     
     }
 
+    
+    
+    return 0;
+}
     
     
     return 0;
